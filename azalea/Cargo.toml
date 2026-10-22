@@ -1,0 +1,17 @@
+[package]
+name = "mcmcp-azalea"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+azalea = { git = "https://github.com/azalea-rs/azalea", rev = "0d38e0dcf47eb258c41b1b09ebc2bcde7253e185" }
+tokio = { version = "1", features = ["full"] }
+axum = "0.8"
+serde_json = "1"
+parking_lot = "0.12"
+eyre = "0.6"
+
+[profile.dev]
+opt-level = 1
+[profile.dev.package."*"]
+opt-level = 3

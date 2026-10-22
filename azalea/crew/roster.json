@@ -1,0 +1,10 @@
+{
+  "board_port": 25700,
+  "bot_port": 25610,
+  "server": "localhost",
+  "supply_note": "Put supply chests next to the build site and tell workers about them in board notes.",
+  "bots": [
+    {"name": "AzBot1", "role": "rigger", "model": "sonnet"},
+    {"name": "AzBot2", "role": "builder", "model": "haiku"}
+  ]
+}

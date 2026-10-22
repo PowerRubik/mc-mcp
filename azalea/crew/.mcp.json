@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "board": {
+      "type": "http",
+      "url": "http://127.0.0.1:25700/mcp"
+    },
+    "mc-azbot1": {
+      "type": "http",
+      "url": "http://127.0.0.1:25610/mcp/azbot1"
+    },
+    "mc-azbot2": {
+      "type": "http",
+      "url": "http://127.0.0.1:25610/mcp/azbot2"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+	"required": true,
+	"package": "dev.bik.mcmcp.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"client": [
+		"KeyMappingAccessor",
+		"FramerateLimitTrackerMixin",
+		"KeyMappingMixin",
+		"LightmapRenderStateExtractorMixin",
+		"MinecraftMixin",
+		"MouseHandlerMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

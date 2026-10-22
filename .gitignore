@@ -1,0 +1,11 @@
+# build output
+fabric/build/
+fabric/.gradle/
+fabric/run/
+fabric/run-server/
+azalea/target/
+# runtime state
+azalea/crew/logs/
+azalea/crew/board/state.json
+azalea/crew/board/state.json.tmp
+*.log

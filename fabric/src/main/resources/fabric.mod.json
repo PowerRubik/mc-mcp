@@ -1,0 +1,27 @@
+{
+	"schemaVersion": 1,
+	"id": "mcmcp",
+	"version": "${version}",
+	"name": "MC MCP",
+	"description": "Exposes the Minecraft client as an MCP server. All actions are performed through vanilla input paths (keybinds and mouse deltas).",
+	"authors": [
+		"bik"
+	],
+	"license": "CC0-1.0",
+	"icon": "assets/mcmcp/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"dev.bik.mcmcp.McMcpClient"
+		]
+	},
+	"mixins": [
+		"mcmcp.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
