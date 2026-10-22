@@ -274,6 +274,11 @@ impl BotHandle {
                     me.client.set_jumping(b(&a, "jump")).map_err(err)?;
                     me.client.set_crouching(b(&a, "sneak") || *me.inner.sneak.lock()).map_err(err)?;
                     me.ticks(ticks).await;
+                    if b(&a, "sneak") {
+                        // Stop first and stay crouched until momentum dies down, so we cannot coast off an edge.
+                        me.client.walk(WalkDirection::None);
+                        me.ticks(4).await;
+                    }
                     let p = me.client.position().map_err(err)?;
                     Ok(format!("done after {ticks} ticks; now at {:.2} {:.2} {:.2}", p.x, p.y, p.z))
                 })

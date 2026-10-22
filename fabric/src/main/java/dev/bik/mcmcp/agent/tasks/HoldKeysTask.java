@@ -33,13 +33,25 @@ public final class HoldKeysTask extends Task {
 		return label + " (" + ticks + "/" + duration + " ticks)";
 	}
 
+	private int stoppedAt = -1;
+
 	@Override
 	protected @Nullable Result tick(Minecraft mc, LocalPlayer p) {
-		if (ticks >= duration || (stopWhenNotUsing && ticks > 5 && !p.isUsingItem())) {
+		if (stoppedAt < 0 && (ticks >= duration || (stopWhenNotUsing && ticks > 5 && !p.isUsingItem()))) {
+			stoppedAt = ticks;
 			for (KeyMapping k : keys) {
-				Input.set(k, false);
+				if (k != mc.options.keyShift) {
+					Input.set(k, false);
+				}
 			}
-			return Result.ok(String.format("done after %d ticks; now at %.2f %.2f %.2f", ticks, p.getX(), p.getY(), p.getZ()));
+		}
+		if (stoppedAt >= 0) {
+			// Keep sneak held until momentum has died down, so the bot cannot coast off an edge it stopped at.
+			if (keys.contains(mc.options.keyShift) && ticks - stoppedAt < 4) {
+				return null;
+			}
+			Input.set(mc.options.keyShift, false);
+			return Result.ok(String.format("done after %d ticks; now at %.2f %.2f %.2f", stoppedAt, p.getX(), p.getY(), p.getZ()));
 		}
 		for (KeyMapping k : keys) {
 			Input.set(k, true);
